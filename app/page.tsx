@@ -160,23 +160,37 @@ const TRACK_MAPS = {
     steps: [
       { stage: "Старт", desc: "Идея + MVP без команды", profit: "0" },
       { stage: "Челлендж", desc: "7-дневная валидация в KULT", profit: "0" },
-      { stage: "Матч", desc: "Получаешь команду маркетологов и ЛМ", profit: "первые продажи" },
+      { stage: "Синергия", desc: "Получаешь команду маркетологов и ЛМ", profit: "первые продажи" },
       { stage: "Масштаб", desc: "Profit Share партнерства", profit: "от 1 млн/мес" },
       { stage: "Лидер", desc: "Портфель проектов в экосистеме", profit: "от 10 млн/мес" },
     ],
     benefits: ["Без венчура и инвесторов", "Команда мотивирована результатом", "Масштаб за недели, не годы"],
+    traditionalSteps: [
+      { stage: "Старт", desc: "Идея + MVP без команды", profit: "0", time: "3 мес" },
+      { stage: "Поиск инвесторов", desc: "Питчи, встречи, переговоры", profit: "-500к", time: "6-12 мес" },
+      { stage: "Венчур", desc: "Получил деньги, отдал 30-50% компании", profit: "0", time: "12 мес" },
+      { stage: "Найм", desc: "Ищешь команду, платишь зарплаты", profit: "-2 млн/мес", time: "18 мес" },
+      { stage: "Банкротство", desc: "Деньги кончились, pivot или смерть", profit: "-10 млн", time: "24 мес" },
+    ],
   },
   marketer: {
     title: "Маркетолог",
     icon: BarChart3,
     steps: [
-      { stage: "Старт", desc: "Фикс 50-100к/мес, работа на 40%", profit: "100к" },
+      { stage: "Старт", desc: "Оклад 50-100к/мес, работа на 40%", profit: "100к" },
       { stage: "Челлендж", desc: "Показываешь скиллы в KULT", profit: "100к" },
-      { stage: "Матч", desc: "Подбор проектов под твои навыки", profit: "150-300к" },
+      { stage: "Синергия", desc: "Подбор проектов под твои навыки", profit: "150-300к" },
       { stage: "Результат", desc: "Profit Share от нескольких проектов", profit: "500к-1 млн" },
       { stage: "Партнер", desc: "Совладелец успешных продуктов", profit: "от 2 млн/мес" },
     ],
-    benefits: ["Работа на 100% мощности", "Доля вместо фикса", "Выбор проектов, в которые веришь"],
+    benefits: ["Работа на 100% мощности", "Доля вместо оклада", "Выбор проектов, в которые веришь"],
+    traditionalSteps: [
+      { stage: "Старт", desc: "Оклад 50-100к/мес, работа на 40%", profit: "100к", time: "0 мес" },
+      { stage: "1 год", desc: "Тот же оклад, выгорание", profit: "100к", time: "12 мес" },
+      { stage: "2 года", desc: "Повышение до 120к, всё ещё на 40%", profit: "120к", time: "24 мес" },
+      { stage: "3 года", desc: "Стагнация, нет роста", profit: "120к", time: "36 мес" },
+      { stage: "Увольнение", desc: "Поиск нового места с тем же окладом", profit: "0", time: "40 мес" },
+    ],
   },
   influencer: {
     title: "Лидер Мнений",
@@ -184,11 +198,18 @@ const TRACK_MAPS = {
     steps: [
       { stage: "Старт", desc: "Разовые интеграции за копейки", profit: "30-100к/интеграция" },
       { stage: "Челлендж", desc: "Валидация аудитории в KULT", profit: "50-150к" },
-      { stage: "Матч", desc: "Личный продюсер подбирает продукты", profit: "200-500к" },
+      { stage: "Синергия", desc: "Личный продюсер подбирает продукты", profit: "200-500к" },
       { stage: "Партнерство", desc: "Долгосрочные Profit Share связки", profit: "от 1 млн/мес" },
       { stage: "Совладелец", desc: "Доли в успешных проектах", profit: "от 5 млн/мес" },
     ],
     benefits: ["Доля от прибыли, не разовые копейки", "Продукты под твою аудиторию", "Приоритет после челленджа"],
+    traditionalSteps: [
+      { stage: "Старт", desc: "Разовые интеграции за 30-100к", profit: "50к", time: "0 мес" },
+      { stage: "6 мес", desc: "Ищешь рекламодателей, торгуешься", profit: "100к", time: "6 мес" },
+      { stage: "1 год", desc: "Аудитория выгорает от рекламы", profit: "80к", time: "12 мес" },
+      { stage: "2 года", desc: "Падение охватов, меньше заказов", profit: "50к", time: "24 мес" },
+      { stage: "Забвение", desc: "Аудитория ушла, нет дохода", profit: "0", time: "36 мес" },
+    ],
   },
 }
 
@@ -535,6 +556,7 @@ const TrustSection: React.FC = () => (
 
 const TrackMapsSection: React.FC<{ openModal: () => void }> = ({ openModal }) => {
   const [activeTrack, setActiveTrack] = useState<"founder" | "marketer" | "influencer">("founder")
+  const [showTraditional, setShowTraditional] = useState(false)
   const track = TRACK_MAPS[activeTrack]
   const TrackIcon = track.icon
 
@@ -543,7 +565,7 @@ const TrackMapsSection: React.FC<{ openModal: () => void }> = ({ openModal }) =>
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           title="ТВОЙ ПУТЬ РОСТА"
-          subtitle="Выбери свою роль и посмотри, как можно вырасти с нами."
+          subtitle="Выбери свою роль и посмотри разницу между традиционным путём и KULT."
           centered={true}
         />
 
@@ -568,21 +590,67 @@ const TrackMapsSection: React.FC<{ openModal: () => void }> = ({ openModal }) =>
           })}
         </div>
 
-        <FadeInSection key={activeTrack}>
+        <div className="flex justify-center gap-4 mb-12">
+          <button
+            onClick={() => setShowTraditional(false)}
+            className={`px-8 py-3 border transition-all ${
+              !showTraditional
+                ? "bg-green-500 text-white border-green-500"
+                : "border-white/20 text-white hover:border-white/50"
+            }`}
+          >
+            <span className="font-bold uppercase text-sm tracking-widest">С KULT</span>
+          </button>
+          <button
+            onClick={() => setShowTraditional(true)}
+            className={`px-8 py-3 border transition-all ${
+              showTraditional
+                ? "bg-red-500/80 text-white border-red-500"
+                : "border-white/20 text-white hover:border-white/50"
+            }`}
+          >
+            <span className="font-bold uppercase text-sm tracking-widest">Традиционный путь</span>
+          </button>
+        </div>
+
+        <FadeInSection key={`${activeTrack}-${showTraditional}`}>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-4">
-              {track.steps.map((step, idx) => (
+              {(showTraditional ? track.traditionalSteps : track.steps).map((step, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-6 p-6 border border-white/10 bg-white/5 hover:bg-white/10 transition-all"
+                  className={`flex items-start gap-6 p-6 border transition-all ${
+                    showTraditional
+                      ? "border-red-500/30 bg-red-500/5 hover:bg-red-500/10"
+                      : "border-white/10 bg-white/5 hover:bg-white/10"
+                  }`}
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white font-bold">
+                  <div
+                    className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-bold ${
+                      showTraditional ? "bg-red-500/20 text-red-300" : "bg-white/10 text-white"
+                    }`}
+                  >
                     {idx + 1}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="text-lg font-bold text-white">{step.stage}</h4>
-                      <span className="text-green-400 font-mono text-sm">{step.profit}</span>
+                      <div className="flex flex-col items-end gap-1">
+                        <span
+                          className={`font-mono text-sm ${
+                            showTraditional
+                              ? step.profit.includes("-")
+                                ? "text-red-400"
+                                : "text-red-300"
+                              : "text-green-400"
+                          }`}
+                        >
+                          {step.profit}
+                        </span>
+                        {showTraditional && "time" in step && (
+                          <span className="text-xs text-kult-muted font-mono">{step.time}</span>
+                        )}
+                      </div>
                     </div>
                     <p className="text-kult-muted text-sm">{step.desc}</p>
                   </div>
@@ -597,37 +665,117 @@ const TrackMapsSection: React.FC<{ openModal: () => void }> = ({ openModal }) =>
                   <h3 className="text-2xl font-serif text-white">{track.title}</h3>
                 </div>
 
-                <h4 className="text-sm font-bold text-kult-muted uppercase tracking-widest mb-4">
-                  Почему проще, быстрее, легче:
-                </h4>
-                <ul className="space-y-3 mb-8">
-                  {track.benefits.map((benefit, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-white">
-                      <CheckCircle2 size={16} className="text-green-400 flex-shrink-0" />
-                      <span>{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
+                {!showTraditional ? (
+                  <>
+                    <h4 className="text-sm font-bold text-kult-muted uppercase tracking-widest mb-4">
+                      Почему проще, быстрее, легче:
+                    </h4>
+                    <ul className="space-y-3 mb-8">
+                      {track.benefits.map((benefit, idx) => (
+                        <li key={idx} className="flex items-center gap-3 text-white">
+                          <CheckCircle2 size={16} className="text-green-400 flex-shrink-0" />
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-                <div className="p-4 bg-green-500/10 border border-green-500/20 mb-6">
-                  <div className="flex items-center gap-2 text-green-400 text-sm font-bold mb-1">
-                    <Star size={14} /> Разница в прибыли
-                  </div>
-                  <p className="text-white text-sm">
-                    {activeTrack === "founder" && "От 0 до 10+ млн/мес без привлечения инвестиций"}
-                    {activeTrack === "marketer" && "От фикса 100к до 2+ млн/мес на Profit Share"}
-                    {activeTrack === "influencer" && "От 30к/интеграция до 5+ млн/мес как совладелец"}
-                  </p>
-                </div>
+                    <div className="p-4 bg-green-500/10 border border-green-500/20 mb-6">
+                      <div className="flex items-center gap-2 text-green-400 text-sm font-bold mb-1">
+                        <Star size={14} /> Разница в прибыли
+                      </div>
+                      <p className="text-white text-sm">
+                        {activeTrack === "founder" && "От 0 до 10+ млн/мес без привлечения инвестиций"}
+                        {activeTrack === "marketer" && "От оклада 100к до 2+ млн/мес на Profit Share"}
+                        {activeTrack === "influencer" && "От 30к/интеграция до 5+ млн/мес как совладелец"}
+                      </p>
+                    </div>
 
-                <button
-                  onClick={openModal}
-                  className="w-full py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
-                >
-                  Начать путь <ArrowRight size={16} />
-                </button>
+                    <button
+                      onClick={openModal}
+                      className="w-full py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
+                    >
+                      Начать путь <ArrowRight size={16} />
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <h4 className="text-sm font-bold text-red-400 uppercase tracking-widest mb-4">
+                      Почему традиционный путь не работает:
+                    </h4>
+                    <ul className="space-y-3 mb-8">
+                      <li className="flex items-start gap-3 text-white">
+                        <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
+                        <span>Долгие переговоры вместо быстрых спринтов</span>
+                      </li>
+                      <li className="flex items-start gap-3 text-white">
+                        <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
+                        <span>Фиксированные расходы убивают проекты</span>
+                      </li>
+                      <li className="flex items-start gap-3 text-white">
+                        <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
+                        <span>Низкая мотивация команды без profit share</span>
+                      </li>
+                      <li className="flex items-start gap-3 text-white">
+                        <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
+                        <span>Стагнация и выгорание</span>
+                      </li>
+                    </ul>
+
+                    <div className="p-4 bg-red-500/10 border border-red-500/20 mb-6">
+                      <div className="flex items-center gap-2 text-red-400 text-sm font-bold mb-1">
+                        <X size={14} /> Реальность традиционного пути
+                      </div>
+                      <p className="text-white text-sm">
+                        {activeTrack === "founder" && "90% стартапов умирают в первые 2 года из-за нехватки денег"}
+                        {activeTrack === "marketer" &&
+                          "Средний маркетолог работает на 40% потенциала за фиксированный оклад"}
+                        {activeTrack === "influencer" && "Аудитория выгорает от постоянной рекламы, охваты падают"}
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={() => setShowTraditional(false)}
+                      className="w-full py-4 bg-green-500 text-white font-bold uppercase tracking-widest hover:bg-green-600 transition-colors flex items-center justify-center gap-2"
+                    >
+                      Посмотреть путь с KULT <ArrowRight size={16} />
+                    </button>
+                  </>
+                )}
               </div>
             </div>
+          </div>
+        </FadeInSection>
+
+        <FadeInSection delay={400}>
+          <div className="mt-20 max-w-4xl mx-auto p-10 border border-white/10 bg-white/5">
+            <h3 className="text-2xl font-serif text-white mb-6 text-center">Честно о рисках</h3>
+            <div className="grid md:grid-cols-2 gap-8 text-kult-muted">
+              <div>
+                <h4 className="text-white font-bold mb-3 flex items-center gap-2">
+                  <Lock size={16} /> Что нужно от тебя
+                </h4>
+                <ul className="space-y-2 text-sm">
+                  <li>• Пройти 7-дневный челлендж и доказать компетенции</li>
+                  <li>• Работать на результат, а не на процесс</li>
+                  <li>• Принять Profit Share модель без гарантий</li>
+                  <li>• Быть готовым к быстрым спринтам и итерациям</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-white font-bold mb-3 flex items-center gap-2">
+                  <Zap size={16} /> Кому НЕ подходит
+                </h4>
+                <ul className="space-y-2 text-sm">
+                  <li>• Тем, кто хочет стабильный оклад без рисков</li>
+                  <li>• Тем, кто не готов работать на 100%</li>
+                  <li>• Тем, кто ищет быстрые деньги без усилий</li>
+                  <li>• Тем, кто не верит в партнерскую модель</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-center text-white mt-8 text-sm">
+              KULT — это не волшебная таблетка. Это система для тех, кто готов работать на результат и делить прибыль.
+            </p>
           </div>
         </FadeInSection>
       </div>
