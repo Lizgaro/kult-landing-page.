@@ -139,17 +139,17 @@ const TRUST_CASES = [
   {
     title: "+206 млн в первый год",
     subtitle: "Почти без бюджета и без зарплат",
-    desc: "На реинвестициях в партнерскую команду маркетологов",
+    desc: "С 30к бюджета на старте за год в новом канале трафика с командой маркетологов в партнерстве",
   },
   {
     title: "+200 млн за год",
     subtitle: "Магазин парфюма в Telegram",
-    desc: "С бюджета 30к",
+    desc: "С бюджета 240к на старте за год в новом канале трафика с командой маркетологов в партнерстве",
   },
   {
     title: "700 млн совокупно",
-    subtitle: "GeekBrains",
-    desc: "17 проектов с бюджета 240к",
+    subtitle: "",
+    desc: "Суммарный результат проектов комьюнити",
   },
 ]
 
@@ -159,12 +159,12 @@ const TRACK_MAPS = {
     icon: Rocket,
     steps: [
       { stage: "Старт", desc: "Идея + MVP без команды", profit: "0" },
-      { stage: "Челлендж", desc: "7-дневная валидация в KULT", profit: "0" },
-      { stage: "Синергия", desc: "Получаешь команду маркетологов и ЛМ", profit: "первые продажи" },
+      { stage: "Челлендж", desc: "7-дневная валидация в культуре маркетинга", profit: "0" },
+      { stage: "Синергия", desc: "Получаешь команду маркетологов и Лидер мнений", profit: "первые продажи" },
       { stage: "Масштаб", desc: "Profit Share партнерства", profit: "от 1 млн/мес" },
-      { stage: "Лидер", desc: "Портфель проектов в экосистеме", profit: "от 10 млн/мес" },
+      { stage: "Лидер", desc: "Портфель партнерств в экосистеме", profit: "от 10 млн/мес" },
     ],
-    benefits: ["Без венчура и инвесторов", "Команда мотивирована результатом", "Масштаб за недели, не годы"],
+    benefits: ["Без венчура и инвесторов", "Команда мотивирована результатом", "Масштаб за недели–месяцы, не годы"],
     traditionalSteps: [
       { stage: "Старт", desc: "Идея + MVP без команды", profit: "0", time: "3 мес" },
       { stage: "Поиск инвесторов", desc: "Питчи, встречи, переговоры", profit: "-500к", time: "6-12 мес" },
@@ -177,36 +177,54 @@ const TRACK_MAPS = {
     title: "Маркетолог",
     icon: BarChart3,
     steps: [
-      { stage: "Старт", desc: "Оклад 50-100к/мес, работа на 40%", profit: "100к" },
-      { stage: "Челлендж", desc: "Показываешь скиллы в KULT", profit: "100к" },
-      { stage: "Синергия", desc: "Подбор проектов под твои навыки", profit: "150-300к" },
-      { stage: "Результат", desc: "Profit Share от нескольких проектов", profit: "500к-1 млн" },
-      { stage: "Партнер", desc: "Совладелец успешных продуктов", profit: "от 2 млн/мес" },
+      { stage: "Челлендж", desc: "Подключение к проекту за 7 дней. Быстрый вход.", profit: "челлендж" },
+      { stage: "Тестовый пилот", desc: "100 часов работы на пилотном проекте", profit: "100-500к" },
+      { stage: "Вход в долю бизнеса", desc: "Долгосрочное партнерство с долей", profit: "300к-1.2 млн (x3)" },
+      { stage: "Скейл", desc: "Масштабирование кратно результатам", profit: "900к-3.6 млн (x3)" },
+      {
+        stage: "Скейл-агентство",
+        desc: "Строит систему агентства, до 20 проектов",
+        profit: "1.8-7.2 млн/год",
+      },
     ],
-    benefits: ["Работа на 100% мощности", "Доля вместо оклада", "Выбор проектов, в которые веришь"],
+    benefits: [
+      "Работа на 100% мощности с равноправным партнерством",
+      "Доля в прибыли и компании вместо оклада",
+      "Выбор проектов, в которые веришь",
+    ],
     traditionalSteps: [
-      { stage: "Старт", desc: "Оклад 50-100к/мес, работа на 40%", profit: "100к", time: "0 мес" },
-      { stage: "1 год", desc: "Тот же оклад, выгорание", profit: "100к", time: "12 мес" },
-      { stage: "2 года", desc: "Повышение до 120к, всё ещё на 40%", profit: "120к", time: "24 мес" },
-      { stage: "3 года", desc: "Стагнация, нет роста", profit: "120к", time: "36 мес" },
-      { stage: "Увольнение", desc: "Поиск нового места с тем же окладом", profit: "0", time: "40 мес" },
+      { stage: "1 год", desc: "Заклад выгорания (рост ~5%/мес)", profit: "100к", time: "12 мес" },
+      { stage: "2 года", desc: "Тот же оклад или +20%", profit: "120к", time: "24 мес" },
+      { stage: "3 года", desc: "Стагнация, попытка сменить работу", profit: "150к", time: "36 мес" },
+      {
+        stage: "Финал",
+        desc: "Выгорание, увольнение, поиск себя",
+        profit: "0",
+        time: "48 мес",
+      },
+      { stage: "Итог", desc: "Потерянные годы на рутину", profit: "0", time: "60 мес" },
     ],
   },
   influencer: {
     title: "Лидер Мнений",
     icon: Target,
     steps: [
-      { stage: "Старт", desc: "Разовые интеграции за копейки", profit: "30-100к/интеграция" },
-      { stage: "Челлендж", desc: "Валидация аудитории в KULT", profit: "50-150к" },
-      { stage: "Синергия", desc: "Личный продюсер подбирает продукты", profit: "200-500к" },
-      { stage: "Партнерство", desc: "Долгосрочные Profit Share связки", profit: "от 1 млн/мес" },
-      { stage: "Совладелец", desc: "Доли в успешных проектах", profit: "от 5 млн/мес" },
+      { stage: "Новичок", desc: "Запуск контент-завода", profit: "160к охвата/мес" },
+      { stage: "Партнер", desc: "400К пилот: эфир + посты", profit: "охваты 15к/пост" },
+      { stage: "Амбасадор", desc: "Продюсирование маркетологом", profit: "1.2 млн/мес (х3)" },
+      { stage: "Лидер мнений", desc: "Качает 5 продуктов в месяц", profit: "3 млн/мес" },
+      { stage: "Совладелец", desc: "Игра в долгую на млн $", profit: "капитализация" },
     ],
     benefits: ["Доля от прибыли, не разовые копейки", "Продукты под твою аудиторию", "Приоритет после челленджа"],
     traditionalSteps: [
       { stage: "Старт", desc: "Разовые интеграции за 30-100к", profit: "50к", time: "0 мес" },
       { stage: "6 мес", desc: "Ищешь рекламодателей, торгуешься", profit: "100к", time: "6 мес" },
-      { stage: "1 год", desc: "Аудитория выгорает от рекламы", profit: "80к", time: "12 мес" },
+      {
+        stage: "1 год",
+        desc: "Большинство рекламодателей не возвращаются повторно",
+        profit: "80к",
+        time: "12 мес",
+      },
       { stage: "2 года", desc: "Падение охватов, меньше заказов", profit: "50к", time: "24 мес" },
       { stage: "Забвение", desc: "Аудитория ушла, нет дохода", profit: "0", time: "36 мес" },
     ],
@@ -353,7 +371,7 @@ const ROLES: RoleFeature[] = [
     icon: Target,
     title: "Лидер мнений",
     points: [
-      "Личный продюсер подбирает продукты под твою аудиторию",
+      "Личный продюсер растит твою аудиторию и фанатов",
       "База релевантных проектов для долгосрочных партнерств",
       "Доля от прибыли вместо копеек за разовую интеграцию",
       "Приоритет в партнерских связках после прохождения челленджа",
@@ -363,10 +381,9 @@ const ROLES: RoleFeature[] = [
     icon: Rocket,
     title: "Фаундер",
     points: [
-      "Команда маркетологов и блогеров, мотивированных на результат",
-      "Масштабирование без венчура и рекламных бюджетов",
-      "Прямой доступ к аудитории через лидеров мнений",
-      "DAO-одобренные партнеры, прошедшие валидацию комьюнити",
+      "Выход на маркетологов для работы за %",
+      "Выход на лидеров мнений для работы за %",
+      "Экосистема партнёров для роста в долгую",
     ],
   },
   {
@@ -404,9 +421,24 @@ const ProjectsSection: React.FC<{ openModal: () => void }> = ({ openModal }) => 
     <div className="max-w-7xl mx-auto">
       <SectionHeader
         title="ПРОЕКТЫ"
-        subtitle="Реальные продукты, которые уже работают или запускаются в экосистеме KULT."
+        subtitle="Реальные продукты, которые уже работают или запускаются в экосистеме культуры маркетинга."
         centered={true}
       />
+
+      <div className="flex flex-wrap justify-center gap-6 mb-16 text-xs font-mono tracking-widest text-kult-muted">
+        <span className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          LIVE — проект уже запущен
+        </span>
+        <span className="flex items-center gap-2">
+          <span className="w-2 h-2 border border-white/20 rounded-full"></span>
+          SOON — запуск в ближайшее время
+        </span>
+        <span className="flex items-center gap-2">
+          <span className="text-green-400 border border-green-400/30 px-1 py-0.5 rounded text-[10px]">REVENUE</span>
+          — проект уже приносит выручку
+        </span>
+      </div>
 
       <div className="mb-20">
         <h3 className="text-sm font-mono uppercase tracking-[0.3em] text-kult-muted mb-10 flex items-center gap-3">
@@ -565,7 +597,7 @@ const TrackMapsSection: React.FC<{ openModal: () => void }> = ({ openModal }) =>
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           title="ТВОЙ ПУТЬ РОСТА"
-          subtitle="Выбери свою роль и посмотри разницу между традиционным путём и KULT."
+          subtitle="Выбери свою роль и посмотри разницу между традиционным путём и культурой маркетинга."
           centered={true}
         />
 
@@ -599,7 +631,7 @@ const TrackMapsSection: React.FC<{ openModal: () => void }> = ({ openModal }) =>
                 : "border-white/20 text-white hover:border-white/50"
             }`}
           >
-            <span className="font-bold uppercase text-sm tracking-widest">С KULT</span>
+            <span className="font-bold uppercase text-sm tracking-widest">С культурой маркетинга</span>
           </button>
           <button
             onClick={() => setShowTraditional(true)}
@@ -665,6 +697,12 @@ const TrackMapsSection: React.FC<{ openModal: () => void }> = ({ openModal }) =>
                   <h3 className="text-2xl font-serif text-white">{track.title}</h3>
                 </div>
 
+                {activeTrack === "influencer" && !showTraditional && (
+                  <p className="text-xs text-green-400 font-mono mb-6 border-l-2 border-green-400 pl-3">
+                    От первых 100к охвата до 5 млн руб и долей на млн $ как совладелец
+                  </p>
+                )}
+
                 {!showTraditional ? (
                   <>
                     <h4 className="text-sm font-bold text-kult-muted uppercase tracking-widest mb-4">
@@ -684,8 +722,9 @@ const TrackMapsSection: React.FC<{ openModal: () => void }> = ({ openModal }) =>
                         <Star size={14} /> Разница в прибыли
                       </div>
                       <p className="text-white text-sm">
-                        {activeTrack === "founder" && "От 0 до 10+ млн/мес без привлечения инвестиций"}
-                        {activeTrack === "marketer" && "От оклада 100к до 2+ млн/мес на Profit Share"}
+                        {activeTrack === "founder" &&
+                          "возможность расти быстро вообще без привлечения денежных инвестиций"}
+                        {activeTrack === "marketer" && "От профита 100к до 2+ млн/мес на Profit Share"}
                         {activeTrack === "influencer" && "От 30к/интеграция до 5+ млн/мес как совладелец"}
                       </p>
                     </div>
@@ -703,22 +742,41 @@ const TrackMapsSection: React.FC<{ openModal: () => void }> = ({ openModal }) =>
                       Почему традиционный путь не работает:
                     </h4>
                     <ul className="space-y-3 mb-8">
-                      <li className="flex items-start gap-3 text-white">
-                        <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
-                        <span>Долгие переговоры вместо быстрых спринтов</span>
-                      </li>
-                      <li className="flex items-start gap-3 text-white">
-                        <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
-                        <span>Фиксированные расходы убивают проекты</span>
-                      </li>
-                      <li className="flex items-start gap-3 text-white">
-                        <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
-                        <span>Низкая мотивация команды без profit share</span>
-                      </li>
-                      <li className="flex items-start gap-3 text-white">
-                        <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
-                        <span>Стагнация и выгорание</span>
-                      </li>
+                      {activeTrack === "marketer" ? (
+                        <>
+                          <li className="flex items-start gap-3 text-white">
+                            <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
+                            <span>Клянчить бюджеты вместо быстрых тестов по трафику</span>
+                          </li>
+                          <li className="flex items-start gap-3 text-white">
+                            <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
+                            <span>Низкая мотивация команды без доли в прибыли</span>
+                          </li>
+                          <li className="flex items-start gap-3 text-white">
+                            <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
+                            <span>Стагнация и выгорание без доли в компании</span>
+                          </li>
+                        </>
+                      ) : (
+                        <>
+                          <li className="flex items-start gap-3 text-white">
+                            <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
+                            <span>Долгие переговоры вместо быстрых спринтов</span>
+                          </li>
+                          <li className="flex items-start gap-3 text-white">
+                            <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
+                            <span>Фиксированные расходы убивают проекты</span>
+                          </li>
+                          <li className="flex items-start gap-3 text-white">
+                            <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
+                            <span>Низкая мотивация команды без profit share</span>
+                          </li>
+                          <li className="flex items-start gap-3 text-white">
+                            <X size={16} className="text-red-400 flex-shrink-0 mt-1" />
+                            <span>Стагнация и выгорание</span>
+                          </li>
+                        </>
+                      )}
                     </ul>
 
                     <div className="p-4 bg-red-500/10 border border-red-500/20 mb-6">
@@ -737,7 +795,7 @@ const TrackMapsSection: React.FC<{ openModal: () => void }> = ({ openModal }) =>
                       onClick={() => setShowTraditional(false)}
                       className="w-full py-4 bg-green-500 text-white font-bold uppercase tracking-widest hover:bg-green-600 transition-colors flex items-center justify-center gap-2"
                     >
-                      Посмотреть путь с KULT <ArrowRight size={16} />
+                      Посмотреть путь с культурой маркетинга <ArrowRight size={16} />
                     </button>
                   </>
                 )}
@@ -774,7 +832,7 @@ const TrackMapsSection: React.FC<{ openModal: () => void }> = ({ openModal }) =>
               </div>
             </div>
             <p className="text-center text-white mt-8 text-sm">
-              KULT — это не волшебная таблетка. Это система для тех, кто готов работать на результат и делить прибыль.
+              Культура маркетинга — это не волшебная таблетка. Это система для тех, кто готов работать на результат и делить прибыль.
             </p>
           </div>
         </FadeInSection>
@@ -787,27 +845,27 @@ const STEPS: ProcessStep[] = [
   {
     number: "01",
     title: "Челлендж",
-    description: "Проходишь 7-дневный челлендж для подтверждения компетенций.",
+    description: "Пройди челлендж, чтобы поймать мэтч с партнёром: маркетолог + фаундер.",
   },
   {
     number: "02",
-    title: "Заявка",
-    description: "Оставляешь заявку на свой проект, скиллы или аудиторию.",
+    title: "Лидер мнений",
+    description: "Пройди челлендж по подключению лидера мнений.",
   },
   {
     number: "03",
-    title: "База",
-    description: "Попадаешь в закрытую базу «горячих» участников.",
+    title: "Вопросы",
+    description: "Приходи на еженедельные мастермайнды; вопросы — в чат.",
   },
   {
     number: "04",
-    title: "Связка",
-    description: "Получаешь релевантных партнеров и начинаешь работу.",
+    title: "Запуск",
+    description: "Сделай первый запуск, чтобы получить 100–500к за 100 часов.",
   },
   {
     number: "05",
-    title: "Прибыль",
-    description: "Работаешь в спринтах и получаешь долю от реальной прибыли.",
+    title: "Масштаб",
+    description: "Масштабируй партнерства и прибыль.",
   },
 ]
 
@@ -841,7 +899,7 @@ export default function Home() {
               КОНЦЕПЦИЯ
             </button>
             <button onClick={() => scrollToSection("projects")} className="hover:text-white transition-colors">
-              ПРОЕКТЫ
+              ПРОЕКТ
             </button>
             <button onClick={() => scrollToSection("trust")} className="hover:text-white transition-colors">
               КЕЙСЫ
@@ -871,7 +929,7 @@ export default function Home() {
               КОНЦЕПЦИЯ
             </button>
             <button onClick={() => scrollToSection("projects")} className="text-left text-2xl font-serif text-white">
-              ПРОЕКТЫ
+              ПРОЕКТ
             </button>
             <button onClick={() => scrollToSection("trust")} className="text-left text-2xl font-serif text-white">
               КЕЙСЫ
@@ -911,21 +969,19 @@ export default function Home() {
             {/* Обновил заголовок в Hero секции */}
             <FadeInSection delay={400}>
               <p className="text-lg md:text-xl text-kult-muted max-w-xl mx-auto lg:mx-0 font-light leading-relaxed mb-12 border-l border-white/20 pl-6 text-left">
-                Единственное место, где фаундер, маркетолог и лидер мнений работают вместе на долях от прибыли.
+                без бюджета на продукт, маркетинг и трафик на старте
               </p>
             </FadeInSection>
 
             <FadeInSection delay={600}>
               <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                <a
-                  href="https://t.me/CultScale_bot"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => scrollToSection("trust")}
                   className="w-full sm:w-auto px-8 py-5 bg-white text-black font-bold text-xs tracking-[0.2em] hover:bg-gray-200 transition-all uppercase flex items-center justify-center gap-3 group"
                 >
-                  Подать заявку
+                  НАШИ ТОП КЕЙСЫ
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </a>
+                </button>
                 <button
                   onClick={() => scrollToSection("concept")}
                   className="w-full sm:w-auto px-8 py-5 border border-white/20 text-white font-bold text-xs tracking-[0.2em] hover:bg-white/5 transition-colors uppercase"
@@ -948,7 +1004,7 @@ export default function Home() {
         </div>
       </header>
 
-      <Marquee text="PARTNERSHIPS • PROFIT SHARE • SCALE •" />
+      <Marquee text="КУЛЬТУРА МАРКЕТИНГА - ПАРТНЁРСТВА ВМЕСТО ЗАРПЛАТ - ДОЛЯ ОТ ПРИБЫЛИ ВМЕСТО БЮДЖЕТОВ" />
 
       <section id="concept" className="py-32 px-6 bg-kult-black relative">
         <div className="max-w-4xl mx-auto">
@@ -1108,8 +1164,8 @@ export default function Home() {
               <span className="text-kult-gray/80 italic font-serif">ПРАВДУ</span>
             </h2>
             <p className="text-lg md:text-xl text-kult-gray/80 mb-16 font-light max-w-2xl mx-auto leading-relaxed">
-              Нас учили, что для бизнеса необходим капитал. Это миф прошлого поколения. Сатоши Накамото создал Bitcoin
-              без ICO и рекламы. Команда из 3 новичков сделала 200 млн без зарплат.
+              Нас учили, что для бизнеса необходим капитал. Это миф прошлого поколения. Сатоши Накамото с партнерами
+              создал Bitcoin на $2 трлн без ICO и рекламы. Команда из 3 новичков сделала 200 млн без зарплат.
             </p>
 
             <div className="bg-kult-black text-white p-10 md:p-16 w-full shadow-2xl relative overflow-hidden group">
@@ -1134,11 +1190,23 @@ export default function Home() {
                   <Lock size={12} /> Закрытое комьюнити
                 </span>
                 <span className="flex items-center gap-2">
-                  <Zap size={12} /> 7 дней на валидацию
+                  <Zap size={12} /> Выход на партнёров за 7 дней бесплатно
                 </span>
               </div>
             </div>
           </FadeInSection>
+        </div>
+      </section>
+
+      <section id="rules" className="py-16 px-6 bg-kult-dark border-t border-white/5">
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-xl font-serif text-white mb-6">Правила атрибуции</h3>
+          <div className="p-6 border border-white/10 bg-white/5 text-kult-muted text-sm leading-relaxed">
+            <p>
+              Привод засчитывается тому, кто первым показал диалог с клиентом и далее была конверсия по этапам. Если до
+              захода в бот клиент уже общался с рекомендателем — засчитывается рекомендателю.
+            </p>
+          </div>
         </div>
       </section>
 
